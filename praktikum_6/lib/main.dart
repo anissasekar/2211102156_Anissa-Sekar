@@ -11,7 +11,9 @@ void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false, 
     )); 
 
-class MyApp extends StatefulWidget { 
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+ 
   @override 
   _MyAppState createState() => _MyAppState(); 
 } 
@@ -86,7 +88,7 @@ class _MyAppState extends State<MyApp> {
 class NewScreen extends StatelessWidget { 
   final String payload; 
 
-  NewScreen({required this.payload}); 
+  const NewScreen({super.key, required this.payload}); 
 
   @override 
   Widget build(BuildContext context) { 
