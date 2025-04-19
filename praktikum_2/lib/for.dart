@@ -1,7 +1,7 @@
 void main() { 
   var mahasiswa = ['Changkyun', 'SangYan', 'ZhangLurang', 'Usok', 'Songpyeon'];  
  
-  mahasiswa.forEach((nama) {  
+  for (var nama in mahasiswa) {  
     print('Nama Mahasiswa: $nama');  
-  }); 
+  } 
 } 
