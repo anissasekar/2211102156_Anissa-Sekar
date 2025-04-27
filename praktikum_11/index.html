@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Belajar JavaScript dan jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    #kotak, #panel, #box {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+      margin: 10px 0;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1 id="judul">Belajar JavaScript</h1>
+<p class="paragraf">Ini adalah paragraf pertama.</p>
+<p class="paragraf">Ini adalah paragraf kedua.</p>
+
+<button id="tombol">Klik Saya</button>
+<button id="toggleButton">Slide Toggle Panel</button>
+<button id="fadeButton">Fade Toggle Box</button>
+
+<div id="panel">Ini panel yang bisa slide toggle</div>
+<div id="box">Ini box yang bisa fade toggle</div>
+<div id="kotak">Kotak untuk animasi</div>
+
+<script>
+  // Variabel dan Tipe Data
+  var nama = "Febrilia"; // Global scope
+  let umur = 21;         // Block scope
+  const kota = "Purwokerto"; // Tidak dapat diubah
+
+  console.log("Nama:", nama);
+  console.log("Umur:", umur);
+  console.log("Kota:", kota);
+
+  // Operator dan Control Flow
+  if (umur > 18) {
+    console.log("Dewasa");
+  } else {
+    console.log("Anak-anak");
+  }
+
+  for (let i = 0; i < 5; i++) {
+    console.log("For Loop ke-", i);
+  }
+
+  let j = 0;
+  while (j < 5) {
+    console.log("While Loop ke-", j);
+    j++;
+  }
+
+  // Fungsi
+  function sapa(nama) {
+    return "Halo, " + nama;
+  }
+
+  console.log(sapa("Febrilia"));
+
+  // Objek
+  const mahasiswa = {
+    nama: "Febrilia",
+    umur: 21,
+    sapa: function() {
+      return "Halo, saya " + this.nama;
+    }
+  };
+
+  console.log(mahasiswa.sapa());
+
+  // jQuery Manipulasi
+  $(document).ready(function() {
+    // Mengubah teks dan warna
+    $("#judul").text("Belajar jQuery");
+    $(".paragraf").css("color", "blue");
+
+    // Event Handling
+    $("#tombol").click(function() {
+      alert("Tombol diklik!");
+    });
+
+    // Slide Toggle
+    $("#toggleButton").click(function() {
+      $("#panel").slideToggle();
+    });
+
+    // Fade Toggle
+    $("#fadeButton").click(function() {
+      $("#box").fadeToggle();
+    });
+
+    // Efek Fade Out dan Fade In
+    $("#kotak").fadeIn(1000).fadeOut(1000);
+  });
+
+  // AJAX dengan jQuery
+  $.get("https://jsonplaceholder.typicode.com/posts", function(data) {
+    console.log("Data dari AJAX (jQuery):", data);
+  });
+
+  // Fetch API dengan Async/Await
+  async function getData() {
+    let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    let data = await response.json();
+    console.log("Data dari Fetch API:", data);
+  }
+
+  getData();
+
+  // Mengirim Data dengan Fetch API
+  async function kirimData() {
+    let response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title: "Belajar JavaScript",
+        body: "Ini contoh pengiriman data",
+        userId: 1
+      })
+    });
+
+    let data = await response.json();
+    console.log("Respon kirim data:", data);
+  }
+
+  kirimData();
+
+</script>
+
+</body>
+</html>
